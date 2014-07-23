@@ -1,0 +1,13 @@
+{
+  "name": "calculator",
+  "version": "0.0.1",
+  "authors": [
+    "Boris Musatov <boris.musatov@gmail.com>"
+  ],
+  "description": "Simple Calculator",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.2.20"
+  }
+}

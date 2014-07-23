@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Calculator">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator problem</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  </head>
+  <body>
+  <div class="container" ng-controller="OperationCtrl">
+    <div class="row">
+    	<div class=".col-md-6 .col-md-offset-3">
+    		<div class="page-header">
+			    <h1>Calculator</h1>
+    		</div>
+		    <form role="form" class="form-inline">
+		    	<div class="row">
+		  			<div class="col-lg-6">
+				    	<div class="form-group">
+				    		<select ng-model="operation" ng-options="item.name for item in operations" class="form-control input-lg" id="operators">
+
+				    		</select>
+				    		<input ng-model="value" class="form-control input-lg" type="number" placeholder="enter a number" />
+                <button id="btnAdd" class="btn btn-default btn-lg" ng-disabled="applied" ng-click="addStep()">Add step</button>
+				  		</div>
+		  			</div>
+		    	</div>
+		  		<div class="row">
+		  			<div class="col-lg-6">
+		  				<ol id="instructions" class="jumbotron" style="margin-top: 2em;">
+                <li ng-repeat="step in steps">{{ step.operation }} {{ step.operand }}</li>
+		  				</ol>
+		  			</div>
+		  		</div>
+		  		<div class="row">
+		  			<div class="col-lg-6">
+			  			<button id="btnCalculate" ng-disabled="!applied" class="btn btn-primary btn-lg" ng-click="calculate()">Calculate</button>
+			  			<button id="btnReset" class="btn btn-danger btn-lg" ng-click="reset()">Reset</button>
+			  		</div>
+		  		</div>
+		  		<div class="row">
+		  			<div class="col-lg-6">
+		  			<h2>Result: <span id="result" class="result">{{result}}</span></h2>
+			  		</div>
+		  		</div>
+		  		</p>
+		    </form>
+	  	</div>
+	</div>
+</div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
