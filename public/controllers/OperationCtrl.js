@@ -1,38 +1,39 @@
-Calculator.controller('OperationCtrl', function($scope, OperationsSvc, CalculatorSvc){
+Calculator.controller('OperationCtrl', function(OperationsSvc, CalculatorSvc){
+  var vm = this;
 
-  $scope.operations = OperationsSvc.operations;
-  $scope.operation = $scope.operations[0];
-  $scope.value = '0';
-  $scope.applied = false;
-  $scope.steps = [];
-  $scope.result = 0;
+  vm.operations = OperationsSvc.operations;
+  vm.operation = vm.operations[0];
+  vm.value = '0';
+  vm.applied = false;
+  vm.steps = [];
+  vm.result = 0;
 
   function resetValues() {
-    $scope.value = 0;
-    $scope.operation = $scope.operations[0];
-    $scope.steps = [];
-    $scope.applied = false;
+    vm.value = 0;
+    vm.operation = vm.operations[0];
+    vm.steps = [];
+    vm.applied = false;
   }
 
-  $scope.addStep = function() {
+  vm.addStep = function() {
     var step = {};
-    step.operation = $scope.operation.name;
-    step.operand = $scope.value;
+    step.operation = vm.operation.name;
+    step.operand = vm.value;
     if(step.operation === 'Apply') {
-      $scope.applied = true;
+      vm.applied = true;
     }
-    $scope.steps.push(step);
-    $scope.value = 0;
+    vm.steps.push(step);
+    vm.value = 0;
   }
 
-  $scope.reset = function() {
-    $scope.value = 0;
+  vm.reset = function() {
+    vm.value = 0;
     resetValues();
   }
 
-  $scope.calculate = function() {
-    var array = $scope.steps;
-    $scope.result = CalculatorSvc.calculate(array);
+  vm.calculate = function() {
+    var array = vm.steps;
+    vm.result = CalculatorSvc.calculate(array);
     resetValues();
   }
 });
