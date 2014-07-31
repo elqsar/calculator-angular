@@ -1,5 +1,10 @@
-Calculator.controller('OperationCtrl', function(OperationsSvc, CalculatorSvc){
-  var vm = this;
+Calculator.controller('OperationCtrl', OperationCtrl);
+
+// minification safe dependencies
+OperationCtrl.$inject['OperationsSvc', 'CalculatorSvc'];
+
+function OperationCtrl(OperationsSvc, CalculatorSvc){
+  var vm = this; // view model
 
   vm.operations = OperationsSvc.operations;
   vm.operation = vm.operations[0];
@@ -8,14 +13,26 @@ Calculator.controller('OperationCtrl', function(OperationsSvc, CalculatorSvc){
   vm.steps = [];
   vm.result = 0;
 
-  function resetValues() {
-    vm.value = 0;
-    vm.operation = vm.operations[0];
-    vm.steps = [];
-    vm.applied = false;
-  }
+  vm.addStep = addStep;
 
-  vm.addStep = function() {
+  vm.reset = reset;
+
+  vm.calculate = calculate;
+
+  /// functions
+
+  function reset() {
+    vm.value = 0;
+    resetValues();
+  };
+
+  function calculate() {
+    var array = vm.steps;
+    vm.result = CalculatorSvc.calculate(array);
+    resetValues();
+  };
+
+  function addStep() {
     var step = {};
     step.operation = vm.operation.name;
     step.operand = vm.value;
@@ -24,16 +41,12 @@ Calculator.controller('OperationCtrl', function(OperationsSvc, CalculatorSvc){
     }
     vm.steps.push(step);
     vm.value = 0;
-  }
+  };
 
-  vm.reset = function() {
+  function resetValues() {
     vm.value = 0;
-    resetValues();
-  }
-
-  vm.calculate = function() {
-    var array = vm.steps;
-    vm.result = CalculatorSvc.calculate(array);
-    resetValues();
-  }
-});
+    vm.operation = vm.operations[0];
+    vm.steps = [];
+    vm.applied = false;
+  };
+}

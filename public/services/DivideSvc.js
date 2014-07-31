@@ -1,7 +1,9 @@
 Calculator.factory('DivideSvc', function(){
   return {
-    apply : function(first, second) {
-      return first / second;
-    }
+    apply : apply
   }
+
+  function apply(first, second) {
+    return first / second;
+  };
 });

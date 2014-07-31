@@ -21,7 +21,7 @@
 				    		<select ng-model="op.operation" ng-options="item.name for item in op.operations" class="form-control input-lg" id="operators">
 
 				    		</select>
-				    		<input ng-model="value" class="form-control input-lg" type="number" placeholder="enter a number" />
+				    		<input ng-model="op.value" class="form-control input-lg" type="number" placeholder="enter a number" />
                 <button id="btnAdd" class="btn btn-default btn-lg" ng-disabled="op.applied" ng-click="op.addStep()">Add step</button>
 				  		</div>
 		  			</div>
