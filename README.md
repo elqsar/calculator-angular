@@ -8,5 +8,3 @@ How to setup:
  - Run: <code>protractor tests/protractor.config.js
   Unit test:
  - just open tests/unit/SpecRunner.html in browser
-
- TODO: update Jasmine version
