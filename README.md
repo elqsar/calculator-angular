@@ -1,7 +1,7 @@
 How to setup:
-1. Ensure you have npm installed and node.js installed.
-2. Run <code>node server.js</code> to launch server with static content.
-3. To run tests:
+* 1. Ensure you have npm installed and node.js installed.
+* 2. Run <code>node server.js</code> to launch server with static content.
+* 3. To run tests:
   E2E tests:
  - Install protractor: https://github.com/angular/protractor/blob/master/docs/tutorial.md
  - Run: <code>webdriver manager
