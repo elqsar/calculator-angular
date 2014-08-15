@@ -6,5 +6,4 @@ How to setup:
  - Install protractor: https://github.com/angular/protractor/blob/master/docs/tutorial.md
  - Run: <code>webdriver manager
  - Run: <code>protractor tests/protractor.config.js
-  Unit test:
- - just open tests/unit/SpecRunner.html in browser
+ - Unit test: just open tests/unit/SpecRunner.html in browser
